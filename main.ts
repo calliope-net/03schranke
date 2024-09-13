@@ -32,7 +32,7 @@ input.onButtonEvent(Button.B, input.buttonEventValue(ButtonEvent.Hold), function
     Schaltwert += 5
     basic.showNumber(Schaltwert)
 })
-let Helligkeit = 0
+let Lichtschranke = 0
 let Motor2 = 0
 let Schaltwert = 0
 let Prozent = 0
@@ -49,9 +49,9 @@ basic.showLeds(`
     . . . # #
     `)
 loops.everyInterval(400, function () {
-    Helligkeit = pins.analogReadPin(AnalogPin.P1)
-    o4digit.show(Helligkeit)
-    if (Motor2 == 0 && Helligkeit > Schaltwert) {
+    Lichtschranke = pins.analogReadPin(AnalogPin.P1)
+    o4digit.show(Lichtschranke)
+    if (Motor2 == 0 && Lichtschranke > Schaltwert) {
         _("Motor aus und Lichtschranke dunkel -> Schranke öffnen")
         Schranke_auf()
     } else if (Motor2 < 0 && input.pinIsPressed(TouchPin.P2)) {
