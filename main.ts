@@ -19,6 +19,7 @@ function Schranke_auf () {
 let Helligkeit = 0
 let Motor2 = 0
 basic.showString("03SCHRANKE")
+_("Erweiterung Grove laden")
 let o4digit = grove.createDisplay(DigitalPin.C16, DigitalPin.C17)
 pins.digitalWritePin(DigitalPin.P0, 1)
 let Schaltwert = 60
