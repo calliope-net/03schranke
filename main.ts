@@ -3,26 +3,51 @@ function Schranke_zu () {
     Motor2 = 100
     motors.motorPower(Motor2)
 }
+input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
+    Prozent += -5
+    basic.showNumber(Prozent)
+})
 function Motor_aus () {
     basic.clearScreen()
-    Motor2 = 0
+    Motor2 = Prozent
     motors.motorPower(Motor2)
 }
+input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
+    Prozent += 5
+    basic.showNumber(Prozent)
+})
 function _ (Kommentar: string) {
 	
 }
 function Schranke_auf () {
     basic.showIcon(IconNames.ArrowNorth)
-    Motor2 = -100
+    Motor2 = Prozent * -1
     motors.motorPower(Motor2)
 }
+input.onButtonEvent(Button.A, input.buttonEventValue(ButtonEvent.Hold), function () {
+    Schaltwert += -5
+    basic.showNumber(Schaltwert)
+})
+input.onButtonEvent(Button.B, input.buttonEventValue(ButtonEvent.Hold), function () {
+    Schaltwert += 5
+    basic.showNumber(Schaltwert)
+})
 let Helligkeit = 0
 let Motor2 = 0
-basic.showString("03SCHRANKE")
+let Schaltwert = 0
+let Prozent = 0
 _("Erweiterung Grove laden")
 let o4digit = grove.createDisplay(DigitalPin.C16, DigitalPin.C17)
+basic.showLeds(`
+    . . . . .
+    . . . . .
+    . . . . #
+    # # # # #
+    . . . # #
+    `)
 pins.digitalWritePin(DigitalPin.P0, 1)
-let Schaltwert = 60
+Prozent = 80
+Schaltwert = 60
 basic.pause(500)
 Schranke_zu()
 loops.everyInterval(400, function () {
