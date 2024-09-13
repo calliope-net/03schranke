@@ -3,8 +3,8 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "v1": "*",
-        "Grove": "github:calliope-edu/pxt-grove#v0.9.2"
+        "Grove": "github:calliope-edu/pxt-grove#v0.9.2",
+        "v1": "*"
     },
     "files": [
         "main.blocks",

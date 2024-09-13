@@ -1,6 +1,6 @@
 function Schranke_zu () {
     basic.showIcon(IconNames.ArrowSouth)
-    Motor2 = 100
+    Motor2 = Prozent
     motors.motorPower(Motor2)
 }
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
@@ -9,7 +9,7 @@ input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
 })
 function Motor_aus () {
     basic.clearScreen()
-    Motor2 = Prozent
+    Motor2 = 0
     motors.motorPower(Motor2)
 }
 input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
@@ -38,6 +38,9 @@ let Schaltwert = 0
 let Prozent = 0
 _("Erweiterung Grove laden")
 let o4digit = grove.createDisplay(DigitalPin.C16, DigitalPin.C17)
+pins.digitalWritePin(DigitalPin.P0, 1)
+Prozent = 90
+Schaltwert = 60
 basic.showLeds(`
     . . . . .
     . . . . .
@@ -45,11 +48,6 @@ basic.showLeds(`
     # # # # #
     . . . # #
     `)
-pins.digitalWritePin(DigitalPin.P0, 1)
-Prozent = 80
-Schaltwert = 60
-basic.pause(500)
-Schranke_zu()
 loops.everyInterval(400, function () {
     Helligkeit = pins.analogReadPin(AnalogPin.P1)
     o4digit.show(Helligkeit)
